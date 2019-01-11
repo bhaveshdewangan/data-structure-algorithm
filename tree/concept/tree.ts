@@ -166,7 +166,7 @@ toDo.insertNode(toDo.root, 6);toDo.insertNode(toDo.root, 10);
 
 //COUNT THE SIZE OF TREE
 var size = toDo.sizeOfTree(toDo.root);
-console.log('SIZE', size);
+console.log('SIZE value', size);
 
 //DEPTH OF THE TREE
 var depth = toDo.depthOfTree(toDo.root);
