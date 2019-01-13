@@ -1,16 +1,17 @@
 linked-list/**/*.js
 tree/**/*.js
 
-#Ignore all JS file present in repositories
+# Ignore all JS file present in repositories
 # **.js
 
-#Ignore only JS file have this particular name
+# Ignore only JS file have this particular name
 # linked-list.js 
 
-#Ignore all JS file present in repositories
+# Ignore all JS file present in repositories
 # *.js 
 
-#Ignore all file present inside this particular "concept" folder
+# Ignore all file present inside this particular "concept" folder
 # concept
  
- linked-list/**/*.txt
+# Remove all .txt file used in repositories
+**/*.txt
