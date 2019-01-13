@@ -1,4 +1,4 @@
-clone or download link list data-structure repository in your local machine after that to run typescript program, you need to install some tools and packages.
+clone or download data-structure repository in your local machine after that to run typescript program, you need to install some tools and packages.
 
 # Follow instruction to create environment to run your typescript project:
  - Install **NODE.js** from https://nodejs.org/en/
