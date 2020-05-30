@@ -141,12 +141,20 @@ export class Tree {
                 return (rightDepth + 1);
         }
     }
+
+    test() {
+        var a = 10;
+        var a = 20
+        // let {c,..res} = {c:1, d:2}  
+        console.log(a);
+    }
 }
 
 let toDo = new Tree();
 toDo.root = toDo.insertNode(toDo.root, 8);
 toDo.insertNode(toDo.root, 3);toDo.insertNode(toDo.root, 1);
 toDo.insertNode(toDo.root, 6);toDo.insertNode(toDo.root, 10);
+toDo.test();
 // toDo.insertNode(toDo.root, 7);
 // toDo.insertNode(toDo.root, 14);toDo.insertNode(toDo.root, 4);
 // toDo.insertNode(toDo.root, 5);

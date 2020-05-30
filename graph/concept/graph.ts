@@ -1,12 +1,12 @@
 import { NodeStructure } from "./node-structure"
 export class Graph {
     public edgeDirection = ''; 
-    public node = null;
+    public node:  Map<number, NodeStructure>;
     static DIRECTED: any;
     static UNDIRECTED: any;
-    constructor(edgeDirection = Graph.DIRECTED){
-        this.edgeDirection = edgeDirection;
-        this.node = new Map();
+    constructor(){
+        this.edgeDirection = '';
+        this.node = new Map<number, NodeStructure>();
     }
 
     addEdge(source: any, destination: any){
@@ -32,7 +32,7 @@ export class Graph {
     removeVertex(value: any){
         var current = this.node.get(value);
         if(current){
-            for(let node of this.node.value()){
+            for(let node of this.node.values()){
                 node.removeAdjacent(current);
             }
         }

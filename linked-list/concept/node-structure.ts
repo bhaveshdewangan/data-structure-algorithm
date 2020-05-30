@@ -7,3 +7,4 @@ export class NodeStructure {
         this.next = null;
     }
 }
+

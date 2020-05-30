@@ -152,6 +152,58 @@ export class LinkedList {
         currentNode.next = null;
         
     }
+
+    findUnique(){
+        let numberArray = [1,3,3,2,2,5];
+        for( var i=0; i < numberArray.length; i++){
+            let plzCallMe = true;
+            while(plzCallMe){
+                let callAgain = false;
+                for( var j=0; j < numberArray.length; j++){
+                    if( j != i){
+                        if(numberArray[j] === numberArray[i]){
+                            numberArray[i] = numberArray[i] + 1;
+                            callAgain = true;
+                        }
+                    }
+                }
+                if(callAgain)
+                    plzCallMe = true;
+                else
+                    plzCallMe = false;
+            }
+        }
+        console.log(numberArray);
+    }
+
+    nextNumberWithSameCombination(){
+        
+    }
+
+    removeDuplicate() {
+        let numberArray = new Array;
+        numberArray =  [1,3,3,2,2,5,7,5,2,7,8,9,9,1,10];
+        let obj = new Object();
+        let result = [];
+        console.log('obj type', this);
+
+        for(var i=0; i< numberArray.length; i++){
+            if(!obj[numberArray[i]]) {
+                obj[numberArray[i]] = true;
+                result.push(numberArray[i]);
+            }
+        }
+
+        let newArray = numberArray.filter((value, index) => {
+            console.log('index of', numberArray.indexOf(value));
+            return numberArray.indexOf(value) == index;
+        })
+
+        console.log(result);
+        console.log(newArray);
+
+        return result;
+    }
 }
 
 var toDo = new LinkedList();
@@ -179,6 +231,11 @@ var toDo = new LinkedList();
 // Reverse Recursive
 // toDo.reverseWithRecursive(toDo.head);
 // toDo.displayAllNode();
+
+
+
+let n = toDo.removeDuplicate();
+
 
 
 
