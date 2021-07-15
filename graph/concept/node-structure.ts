@@ -1,28 +1,38 @@
 export class NodeStructure {
-    public element: number;
-    public adjacents: NodeStructure[];
-    constructor(element: any){
+    public element;
+    public adjacencyList: NodeStructure[] = [];
+    constructor(element) {
         this.element = element;
-        this.adjacents =  [];
     }
 
-    addAdjacent(node: NodeStructure){
-        this.adjacents.push(node);
+    addAdjacent(node: NodeStructure) {
+        let isExist = this.adjacencyList.find(item => item.element == node.element);
+        if (!isExist) {
+            this.adjacencyList.push(node)
+        }
     }
 
-    removeAdjacent(node: NodeStructure){
-        let index = this.adjacents.indexOf(node);
-        if(index > -1){
-            this.adjacents.splice(index, 1);
+    removeAdjacent(node: NodeStructure) {
+        let index = this.adjacencyList.findIndex(item => item.element == node.element);
+        if (index > -1) {
+            this.adjacencyList.splice(index, 1);
             return node;
         }
     }
 
-    getAdjacent(){
-        return this.adjacents;
+    isAlreadyEdge(node: NodeStructure) {
+        let index = this.adjacencyList.findIndex(item => item.element == node.element);
+        if (index > -1) {
+            return true;
+        }
+        return false;
     }
 
-    isAdjacent(node:NodeStructure){
-        return this.adjacents.indexOf(node) > -1;
+    getAdjacent() {
+        return this.adjacencyList;
+    }
+
+    isAdjacent(node: NodeStructure) {
+        return this.adjacencyList.indexOf(node) > -1;
     }
 }
