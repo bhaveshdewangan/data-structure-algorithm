@@ -7,6 +7,6 @@ Here i have cover basic data structure concept and solved problem related to res
  - Then open cmd to install typescript and the command is : **npm run -g typescript**
 
 After setup the environment you have to compile and run the program, so for that following below steps
-- After clone open your new cmd and then go to the TypeScript files eg.              data-structure\linked-list\concept\linked-list.ts
+- After clone open your new cmd and then go to the TypeScript files eg.              data-structure-algorithm\data-structure\linked-list\concept\linked-list.ts
 - To execute you have to enter in cmd: **tsc linked-list.ts**.
 - After successfull compilation one JavaScript file **linked-list.js** is generated in same folder. Then you have to enter one last command: **node linked-list.js**
