@@ -3,38 +3,38 @@ import { Tree } from '../concept/tree';
 
 export class Problems extends Tree {
     // constructor(){super()}
-    public _index: number ;
+    public _index: number;
 
     mirror(node: NodeStructure) {
-       if(node == null)
-        return null;
-       else {
-        this.mirror(node.leftNode);
-        this.mirror(node.rightNode);
+        if (node == null)
+            return null;
+        else {
+            this.mirror(node.leftNode);
+            this.mirror(node.rightNode);
 
-        let temp: NodeStructure;
-        temp = node.leftNode;
-        node.leftNode = node.rightNode;
-        node.rightNode = temp;
-       }
+            let temp: NodeStructure;
+            temp = node.leftNode;
+            node.leftNode = node.rightNode;
+            node.rightNode = temp;
+        }
     }
 
-    lowestCommonAncestor(node:NodeStructure, n1: Number, n2:Number){
-        while(node != null){
-            if(node.element > n1 && node.element > n2){
+    lowestCommonAncestor(node: NodeStructure, n1: Number, n2: Number) {
+        while (node != null) {
+            if (node.element > n1 && node.element > n2) {
                 node = node.leftNode;
             }
-            else if(node.element < n1 && node.element < n2){
+            else if (node.element < n1 && node.element < n2) {
                 node = node.rightNode;
             }
-            else{
+            else {
                 break;
             }
         }
         return node;
     }
 
-    reverseAlternateLevel(node:NodeStructure){
+    reverseAlternateLevel(node: NodeStructure) {
         let nodeBag = [];
 
         this.collectAlternateNodes(node, nodeBag, 0, 0)
@@ -42,23 +42,23 @@ export class Problems extends Tree {
         this.modifyTree(node, nodeBag, 0, 0);
     }
 
-    collectAlternateNodes(node: NodeStructure, nodeBag: any[],index: number, counter: number): any {
-        if(node == null)
+    collectAlternateNodes(node: NodeStructure, nodeBag: any[], index: number, counter: number): any {
+        if (node == null)
             return null;
-        this.collectAlternateNodes(node.leftNode, nodeBag, index, counter+1)
+        this.collectAlternateNodes(node.leftNode, nodeBag, index, counter + 1)
 
-        if(counter%2 != 0){
+        if (counter % 2 != 0) {
             nodeBag.push(node.element);
         }
 
-        this.collectAlternateNodes(node.rightNode, nodeBag, index, counter+1);
+        this.collectAlternateNodes(node.rightNode, nodeBag, index, counter + 1);
     }
 
-    reverseAlternateNodes(nodeBag: any[]){
+    reverseAlternateNodes(nodeBag: any[]) {
         let start = 0;
-        let end = nodeBag.length-1;
+        let end = nodeBag.length - 1;
 
-        while(end > start){
+        while (end > start) {
             let temp = nodeBag[start];
             nodeBag[start] = nodeBag[end];
             nodeBag[end] = temp;
@@ -69,26 +69,45 @@ export class Problems extends Tree {
         console.log(nodeBag);
     }
 
-    modifyTree(node: NodeStructure, nodeBag: any[], index: number, counter: number){
+    modifyTree(node: NodeStructure, nodeBag: any[], index: number, counter: number) {
         this._index = index;
-        if(node == null)
-        return null;
-        this.modifyTree(node.leftNode, nodeBag, this._index, counter+1)
+        if (node == null)
+            return null;
+        this.modifyTree(node.leftNode, nodeBag, this._index, counter + 1)
 
-        if(counter%2 != 0){
+        if (counter % 2 != 0) {
             console.log('value', node.element, nodeBag[this._index], this._index);
             node.element = nodeBag[this._index];
-            this._index =this._index + 1;
+            this._index = this._index + 1;
         }
-        this.modifyTree(node.rightNode, nodeBag, this._index, counter+1);
+        this.modifyTree(node.rightNode, nodeBag, this._index, counter + 1);
+    }
+
+    borderNodeLeftToRight(node: NodeStructure, level, dir) {
+        if (node == null) {
+            return null
+        }
+        level++
+        if (dir == 'left') {
+            this.printBorder(node.leftNode, level, dir);
+            level--;
+        }
+        console.log(`--> ${node.element} current level - ${level}`);
+        if (level == 0 && dir == 'left') {
+            console.log('DIRECTION CHANGED', node.rightNode.element)
+            dir = 'right'
+        }
+        if (dir == 'right') {
+            this.printBorder(node.rightNode, level, dir);
+        }
     }
 }
 
 var toDo = new Problems()
 toDo.root = toDo.insertNode(toDo.root, 8);
-toDo.insertNode(toDo.root, 3);toDo.insertNode(toDo.root, 1);
-toDo.insertNode(toDo.root, 6);toDo.insertNode(toDo.root, 10);
-toDo.insertNode(toDo.root, 9);toDo.insertNode(toDo.root, 12);
+toDo.insertNode(toDo.root, 3); toDo.insertNode(toDo.root, 1);
+toDo.insertNode(toDo.root, 6); toDo.insertNode(toDo.root, 10);
+toDo.insertNode(toDo.root, 9); toDo.insertNode(toDo.root, 12);
 
 
 //Mirror of BST
