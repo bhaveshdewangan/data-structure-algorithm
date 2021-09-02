@@ -42,6 +42,17 @@ export class Tree {
 
     }
 
+    printLeftView(root, type) {
+        if(root == null) {
+            return null
+        }
+        this.printLeftView(root.leftNode, 'left');
+        if(type == 'left') {
+            console.log('-->', root.element);
+        }
+        this.printLeftView(root.rightNode,  'right');
+    }
+
     deleteNode(node: NodeStructure, key) {
         if (node == null) {
             return null;
@@ -134,21 +145,25 @@ export class Tree {
         else {
             let leftDepth = this.depthOfTree(node.leftNode);
             let rightDepth = this.depthOfTree(node.rightNode);
+            return leftDepth+1+rightDepth
 
             if (leftDepth > rightDepth)
                 return (leftDepth + 1);
             else
                 return (rightDepth + 1);
-        }
+            }
     }
 }
 
 let toDo = new Tree();
 toDo.root = toDo.insertNode(toDo.root, 8);
-toDo.insertNode(toDo.root, 3); toDo.insertNode(toDo.root, 1);
-toDo.insertNode(toDo.root, 6); toDo.insertNode(toDo.root, 10);
-toDo.insertNode(toDo.root, 11); toDo.insertNode(toDo.root, 12);
-; toDo.insertNode(toDo.root, 15);
+toDo.insertNode(toDo.root, 3);
+ toDo.insertNode(toDo.root, 1);
+toDo.insertNode(toDo.root, 6); 
+toDo.insertNode(toDo.root, 10);
+
+toDo.insertNode(toDo.root, 9); toDo.insertNode(toDo.root, 12);
+// ; toDo.insertNode(toDo.root, 15);
 // toDo.insertNode(toDo.root, 7);
 // toDo.insertNode(toDo.root, 14);toDo.insertNode(toDo.root, 4);
 // toDo.insertNode(toDo.root, 5);
@@ -175,5 +190,8 @@ toDo.insertNode(toDo.root, 11); toDo.insertNode(toDo.root, 12);
 // console.log('DEPTH', depth);
 
 // PRINT BORDER
-toDo.printBorder(toDo.root, 0, 'left')
+// toDo.printBorder(toDo.root, 0, 'left')
 
+console.log(toDo.depthOfTree(toDo.root), toDo.sizeOfTree(toDo.root))
+
+console.log(toDo.printLeftView(toDo.root, 'left'))
